@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Art Portfolio Builder">
+    <title>Art Portfolio Builder</title>
+
+    <!-- Link to Manifest File -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Add the link to the styles if you have one -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Art Portfolio Builder</h1>
+        <button id="addProjectBtn">Add New Project</button>
+    </header>
+
+    <div id="portfolioContainer">
+        <h2>Your Portfolio</h2>
+        <div id="portfolioList"></div>
+    </div>
+
+    <!-- Add Project Modal -->
+    <div id="addProjectModal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+            <h3>Add New Project</h3>
+            <form id="projectForm">
+                <input type="file" id="imageInput" accept="image/*" required><br><br>
+                <input type="text" id="titleInput" placeholder="Project Title" required><br><br>
+                <textarea id="descInput" placeholder="Project Description" required></textarea><br><br>
+                <button type="submit">Add Project</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Service Worker Registration Script -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then((registration) => {
+                        console.log('Service Worker registered with scope:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
